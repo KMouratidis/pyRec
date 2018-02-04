@@ -9,7 +9,7 @@ directory = 'mouse_recorder'
 try:
     session_name = sys.argv[1]
 except:
-    print 'you must enter a name for the session\nfor example: python replay.py session_name'
+    print('you must enter a name for the session\nfor example: python replay.py session_name')
     sys.exit()
 dir_path = os.path.join(os.getcwd(), directory, session_name)
 
@@ -36,29 +36,35 @@ t_last = float(new_steps[0][-1])
 for step in new_steps:
 
     if step[0] == 'left_down':
-        time.sleep(float(step[-1]) - t_last)
+        #time.sleep(float(step[-1]) - t_last)
         pyautogui.moveTo(int(step[1]), int(step[2]))
         pyautogui.mouseDown(button='left')
         t_last = float(step[-1])
 
     if step[0] == 'left_up':
-        time.sleep(float(step[-1]) - t_last)
+        #time.sleep(float(step[-1]) - t_last)
         pyautogui.moveTo(int(step[1]), int(step[2]))
         pyautogui.mouseUp(button='left')
         t_last = float(step[-1])
 
     if step[0] == 'right_down':
-        time.sleep(float(step[-1]) - t_last)
+        #time.sleep(float(step[-1]) - t_last)
         pyautogui.moveTo(int(step[1]), int(step[2]))
         pyautogui.mouseDown(button='right')
         t_last = float(step[-1])
 
     if step[0] == 'right_up':
-        time.sleep(float(step[-1]) - t_last)
+        #time.sleep(float(step[-1]) - t_last)
         pyautogui.moveTo(int(step[1]), int(step[2]))
         pyautogui.mouseUp(button='right')
         t_last = float(step[-1])
 
+
+    if step[0] == "Key":
+        #time.sleep(float(step[-1]) - t_last)
+        pyautogui.press(chr(int(step[1])))
+        t_last = float(step[-1])
+
     if step[0] == 'done':
-        print 'End autorun'
+        print('End autorun')
         sys.exit()
